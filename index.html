@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming, Framing & Military Perception Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header class="hero">
+        <button id="darkModeToggle" class="dark-toggle">
+            🌙 Dark Mode
+        </button>
+
+        <h1>Gaming, Framing & Military Perception Dashboard</h1>
+
+        <p>
+            Interaktive Auswertung einer wissenschaftlichen Umfrage
+            zu militärischen Spielen, strategischem Framing und
+            gesellschaftlicher Wahrnehmung.
+        </p>
+    </header>
+
+    <nav class="dashboard-nav">
+        <a href="#overview">📊 Übersicht</a>
+        <a href="#framing">🧠 Framing</a>
+        <a href="#gaming">🎮 Gaming</a>
+        <a href="#bundeswehr">⚔ Bundeswehr</a>
+        <a href="#answers">📝 Antworten</a>
+    </nav>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Forschungsfrage</h2>
+
+            <p>
+                Inwiefern tragen strategisches Framing in digitalen Spielen
+                und die damit verbundene Kommunikation dazu bei,
+                öffentliche Wahrnehmung zu rahmen,
+                alternative Deutungen von Konflikten und Rollen
+                sowie gesellschaftliche Meinung zum Militär
+                und seinem Handeln zu erzeugen?
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Filter</h2>
+
+            <div class="filter-grid">
+                <div>
+                    <label for="frequencyFilter">Spielhäufigkeit</label>
+
+                    <select id="frequencyFilter">
+                        <option value="all">Alle</option>
+                        <option value="Nie">Nie</option>
+                        <option value="Selten">Selten</option>
+                        <option value="Gelegentlich">Gelegentlich</option>
+                        <option value="Häufig">Häufig</option>
+                        <option value="Sehr häufig">Sehr häufig</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="ageFilter">Altersgruppe</label>
+
+                    <select id="ageFilter">
+                        <option value="all">Alle</option>
+                        <option value="16-20">16-20</option>
+                        <option value="21-25">21-25</option>
+                        <option value="26-30">26-30</option>
+                        <option value="31+">31+</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="gameFilter">Bekanntes Spiel</label>
+
+                    <select id="gameFilter">
+                        <option value="all">Alle</option>
+                        <option value="Call of Duty">Call of Duty</option>
+                        <option value="Battlefield">Battlefield</option>
+                        <option value="Arma">Arma</option>
+                        <option value="Squad">Squad</option>
+                        <option value="Escape from Tarkov">Escape from Tarkov</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button id="resetFilters">Filter zurücksetzen</button>
+                <button id="randomizeData">Neue Zufallsdaten</button>
+                <button id="exportCsv">CSV exportieren</button>
+            </div>
+        </section>
+
+        <section id="overview" class="kpi-grid">
+            <div class="kpi-card">
+                <h3>Teilnehmende</h3>
+                <p id="totalParticipants">0</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Ø Einfluss</h3>
+                <p id="avgInfluence">0</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Positives Soldatenbild</h3>
+                <p id="positiveMilitaryView">0%</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Kritische Haltung</h3>
+                <p id="criticalBundeswehrView">0%</p>
+            </div>
+        </section>
+
+        <section id="framing" class="chart-grid">
+            <div class="card">
+                <h2>Spielhäufigkeit</h2>
+                <canvas id="frequencyChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Soldatenbild</h2>
+                <canvas id="militaryViewChart"></canvas>
+            </div>
+
+            <div id="gaming" class="card">
+                <h2>Gesellschaftlicher Einfluss</h2>
+                <canvas id="influenceChart"></canvas>
+            </div>
+
+            <div id="bundeswehr" class="card">
+                <h2>Bewertung Bundeswehr-Spiel</h2>
+                <canvas id="bundeswehrChart"></canvas>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Detailanalyse</h2>
+
+            <div id="detailAnalysis" class="detail-analysis">
+                <h3>Noch keine Kategorie ausgewählt</h3>
+                <p>
+                    Klicke auf einen Balken oder ein Segment in einem Diagramm,
+                    um hier eine genauere Analyse zu sehen.
+                </p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Automatische Interpretation</h2>
+
+            <p id="interpretationText">
+                Hier erscheint automatisch eine datenbasierte Interpretation.
+            </p>
+        </section>
+
+        <section id="answers" class="card">
+            <h2>Offene Antworten</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Antworten durchsuchen..."
+            >
+
+            <div id="openAnswers"></div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
