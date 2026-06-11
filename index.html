@@ -1,182 +1,352 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming, Framing & Military Perception Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming, Framing & Military Perception</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-    <header class="hero">
-        <button id="darkModeToggle" class="dark-toggle">
-            🌙 Dark Mode
-        </button>
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <header class="hero" id="hero">
+    <button class="theme-toggle" id="themeToggle" aria-label="Dark Mode umschalten">
+      <span id="themeIcon">🌙</span>
+      <span id="themeLabel">Dark Mode</span>
+    </button>
 
-        <h1>Gaming, Framing & Military Perception Dashboard</h1>
+    <p class="hero__eyebrow">Wissenschaftliche Umfrage &middot; N&thinsp;=&thinsp;10.000</p>
+    <h1 class="hero__heading">Gaming,<br>Framing &amp;<br>Military Perception</h1>
+    <p class="hero__sub">
+      Interaktive Auswertung zum Einfluss militärischer Spiele
+      auf gesellschaftliche Wahrnehmung und Deutungsmuster.
+    </p>
+  </header>
 
+  <!-- ── Navigation pill ───────────────────────────────────── -->
+  <nav class="nav-pill" aria-label="Kapitelnavigation">
+    <div class="nav-pill__inner">
+      <a href="#frage"          class="nav-pill__link">Fragestellung</a>
+      <a href="#teilnehmende"   class="nav-pill__link">Stichprobe</a>
+      <a href="#spielhaeufigkeit" class="nav-pill__link">Spielhäufigkeit</a>
+      <a href="#soldatenbild"   class="nav-pill__link">Soldatenbild</a>
+      <a href="#einfluss"       class="nav-pill__link">Einfluss</a>
+      <a href="#bundeswehr"     class="nav-pill__link">Bundeswehr-Spiel</a>
+      <a href="#erkunden"       class="nav-pill__link">Erkunden</a>
+      <a href="#stimmen"        class="nav-pill__link">Stimmen</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 01 — Forschungsfrage
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="frage">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 01 &mdash; Fragestellung</p>
+      <h2 class="chapter-heading">Eine Frage über Spiele,<br>Sprache und Wahrnehmung</h2>
+      <p class="chapter-lead">
+        Digitale Militärspiele sind längst Teil der Massenkultur. Diese Studie
+        fragt, ob und wie sie öffentliche Meinungsbilder formen. Ausgangspunkt
+        ist die folgende Forschungsfrage:
+      </p>
+    </div>
+    <div class="page-narrow">
+      <blockquote class="research-quote">
         <p>
-            Interaktive Auswertung einer wissenschaftlichen Umfrage
-            zu militärischen Spielen, strategischem Framing und
-            gesellschaftlicher Wahrnehmung.
+          Inwiefern tragen strategisches Framing in digitalen Spielen
+          und die damit verbundene Kommunikation dazu bei, öffentliche
+          Wahrnehmung zu rahmen, alternative Deutungen von Konflikten
+          und Rollen sowie gesellschaftliche Meinung zum Militär und
+          seinem Handeln zu erzeugen?
         </p>
-    </header>
+      </blockquote>
+    </div>
+  </section>
 
-    <nav class="dashboard-nav">
-        <a href="#overview">📊 Übersicht</a>
-        <a href="#framing">🧠 Framing</a>
-        <a href="#gaming">🎮 Gaming</a>
-        <a href="#bundeswehr">⚔ Bundeswehr</a>
-        <a href="#answers">📝 Antworten</a>
-    </nav>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 02 — Stichprobe / KPIs
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="teilnehmende">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 02 &mdash; Stichprobe</p>
+      <h2 class="chapter-heading">Wer hat teilgenommen?</h2>
+      <p class="chapter-lead">
+        An der Umfrage nahmen <strong>10.000 junge Menschen</strong> teil.
+        Mehr als die Hälfte gehört der Altersgruppe 21–25 an —
+        eine Generation, die mit digitalen Medien aufgewachsen ist
+        und militärische Spiele als selbstverständlichen Teil der Popkultur kennt.
+        Vier Kennzahlen fassen das Gesamtbild zusammen.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="kpi-grid">
+        <div class="kpi-tile">
+          <p class="kpi-tile__label">Teilnehmende gesamt</p>
+          <p class="kpi-tile__value" id="kpi-total">&mdash;</p>
+          <p class="kpi-tile__note">Simulierte Stichprobe</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-tile__label">Ø Wahrgen. Einfluss</p>
+          <p class="kpi-tile__value" id="kpi-avg">&mdash;</p>
+          <p class="kpi-tile__note">Skala 1&thinsp;–&thinsp;5</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-tile__label">Positives Soldatenbild</p>
+          <p class="kpi-tile__value" id="kpi-positive">&mdash;</p>
+          <p class="kpi-tile__note">Sehr positiv + Eher positiv</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-tile__label">Kritisch zum BW-Spiel</p>
+          <p class="kpi-tile__value" id="kpi-critical">&mdash;</p>
+          <p class="kpi-tile__note">Eher kritisch + Sehr kritisch</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <main class="container">
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 03 — Spielhäufigkeit
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="spielhaeufigkeit">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 03 &mdash; Nutzungsverhalten</p>
+      <h2 class="chapter-heading">Militärspiele sind kein Nischenphänomen</h2>
+      <p class="chapter-lead">
+        Mehr als 80&thinsp;% der Befragten spielen militärische Games gelegentlich
+        bis sehr häufig. Sie sind regelmäßig mit fiktionalen Bildern von Krieg,
+        Soldaten und Streitkräften konfrontiert — ein medialer Kontext,
+        der Framingprozesse langfristig begünstigt.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="chart-card">
+        <p class="chart-card__title">Spielhäufigkeit — Verteilung (N&thinsp;=&thinsp;10.000)</p>
+        <canvas id="narrative-frequency"></canvas>
+      </div>
+      <div class="callout" id="callout-frequency">
+        Wird nach der Datengenerierung befüllt.
+      </div>
+    </div>
+  </section>
 
-        <section class="card">
-            <h2>Forschungsfrage</h2>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 04 — Soldatenbild
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="soldatenbild">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 04 &mdash; Wahrnehmung</p>
+      <h2 class="chapter-heading">Wie sehen Spieler Soldaten?</h2>
+      <p class="chapter-lead">
+        Etwa ein Drittel der Befragten hat ein positives Bild von Soldaten.
+        Die Mehrheit bleibt neutral — ein Hinweis, dass Gaming allein keine
+        einseitige Glorifizierung produziert, aber als verstärkender Faktor
+        wirken kann.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="chart-duo">
+        <div class="chart-card">
+          <p class="chart-card__title">Soldatenbild — Verteilung</p>
+          <canvas id="narrative-military"></canvas>
+        </div>
+        <div class="callout" id="callout-military">
+          Wird nach der Datengenerierung befüllt.
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <p>
-                Inwiefern tragen strategisches Framing in digitalen Spielen
-                und die damit verbundene Kommunikation dazu bei,
-                öffentliche Wahrnehmung zu rahmen,
-                alternative Deutungen von Konflikten und Rollen
-                sowie gesellschaftliche Meinung zum Militär
-                und seinem Handeln zu erzeugen?
-            </p>
-        </section>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 05 — Gesellschaftlicher Einfluss
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="einfluss">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 05 &mdash; Medienwirkung</p>
+      <h2 class="chapter-heading">Gaming formt gesellschaftliche Meinungen</h2>
+      <p class="chapter-lead">
+        Auf einer Skala von 1 bis 5 schätzt die Mehrheit den gesellschaftlichen
+        Einfluss von Militärspielen auf 4 oder 5 ein. Die Befragten sind sich
+        der Framingwirkung bewusst — und sehen Gaming als relevanten Faktor
+        in der öffentlichen Meinungsbildung.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="chart-card">
+        <p class="chart-card__title">Wahrgenommener gesellschaftlicher Einfluss — Skala 1 (gering) bis 5 (sehr stark)</p>
+        <canvas id="narrative-influence"></canvas>
+      </div>
+      <div class="callout" id="callout-influence">
+        Wird nach der Datengenerierung befüllt.
+      </div>
+    </div>
+  </section>
 
-        <section class="card">
-            <h2>Filter</h2>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 06 — Bundeswehr-Spiel
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="bundeswehr">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 06 &mdash; Institutionelle Kommunikation</p>
+      <h2 class="chapter-heading">Ein Bundeswehr-Spiel?<br>Skepsis überwiegt</h2>
+      <p class="chapter-lead">
+        Über 60&thinsp;% der Befragten stehen der Idee eines offiziellen Bundeswehr-Spiels
+        eher oder sehr kritisch gegenüber — ein Befund, der eine ausgeprägte
+        Sensibilität gegenüber staatlichem Imagemanagement via Gaming zeigt.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="chart-duo">
+        <div class="chart-card">
+          <p class="chart-card__title">Bewertung eines offiziellen Bundeswehr-Spiels</p>
+          <canvas id="narrative-bundeswehr"></canvas>
+        </div>
+        <div class="callout" id="callout-bundeswehr">
+          Wird nach der Datengenerierung befüllt.
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="filter-grid">
-                <div>
-                    <label for="frequencyFilter">Spielhäufigkeit</label>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 07 — Interaktiv erkunden
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="erkunden">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 07 &mdash; Interaktive Analyse</p>
+      <h2 class="chapter-heading">Dein Blick auf die Daten</h2>
+      <p class="chapter-lead">
+        Schau dir die Daten nach Altersgruppe, Spielhäufigkeit oder einem
+        bestimmten Spiel an — und entdecke, wie sich die Verteilungen verschieben.
+        Alle vier Auswertungen reagieren live auf deine Auswahl.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="explore-card">
 
-                    <select id="frequencyFilter">
-                        <option value="all">Alle</option>
-                        <option value="Nie">Nie</option>
-                        <option value="Selten">Selten</option>
-                        <option value="Gelegentlich">Gelegentlich</option>
-                        <option value="Häufig">Häufig</option>
-                        <option value="Sehr häufig">Sehr häufig</option>
-                    </select>
-                </div>
+        <!-- Filter controls -->
+        <div class="filter-row">
+          <div class="filter-group">
+            <label for="filter-frequency">Spielhäufigkeit</label>
+            <select id="filter-frequency">
+              <option value="all">Alle</option>
+              <option value="Nie">Nie</option>
+              <option value="Selten">Selten</option>
+              <option value="Gelegentlich">Gelegentlich</option>
+              <option value="Häufig">Häufig</option>
+              <option value="Sehr häufig">Sehr häufig</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-age">Altersgruppe</label>
+            <select id="filter-age">
+              <option value="all">Alle</option>
+              <option value="16-20">16–20</option>
+              <option value="21-25">21–25</option>
+              <option value="26-30">26–30</option>
+              <option value="31+">31+</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-game">Bekanntes Spiel</label>
+            <select id="filter-game">
+              <option value="all">Alle Spiele</option>
+              <option value="Call of Duty">Call of Duty</option>
+              <option value="Battlefield">Battlefield</option>
+              <option value="Arma">Arma</option>
+              <option value="Squad">Squad</option>
+              <option value="Escape from Tarkov">Escape from Tarkov</option>
+            </select>
+          </div>
+        </div>
 
-                <div>
-                    <label for="ageFilter">Altersgruppe</label>
+        <!-- Dynamic interpretation -->
+        <div class="callout" id="interpretation-text">
+          Wähle einen Filter, um die Daten gezielt zu erkunden.
+        </div>
 
-                    <select id="ageFilter">
-                        <option value="all">Alle</option>
-                        <option value="16-20">16-20</option>
-                        <option value="21-25">21-25</option>
-                        <option value="26-30">26-30</option>
-                        <option value="31+">31+</option>
-                    </select>
-                </div>
+        <!-- 2×2 interactive charts -->
+        <div class="explore-charts">
+          <div class="chart-card">
+            <p class="chart-card__title">Spielhäufigkeit</p>
+            <canvas id="ix-frequency"></canvas>
+          </div>
+          <div class="chart-card">
+            <p class="chart-card__title">Soldatenbild</p>
+            <canvas id="ix-military"></canvas>
+          </div>
+          <div class="chart-card">
+            <p class="chart-card__title">Gesellschaftlicher Einfluss</p>
+            <canvas id="ix-influence"></canvas>
+          </div>
+          <div class="chart-card">
+            <p class="chart-card__title">Bewertung Bundeswehr-Spiel</p>
+            <canvas id="ix-bundeswehr"></canvas>
+          </div>
+        </div>
 
-                <div>
-                    <label for="gameFilter">Bekanntes Spiel</label>
+        <!-- Click-to-reveal detail panel -->
+        <div class="detail-panel" id="detail-panel">
+          <p class="detail-panel__heading">Noch keine Kategorie ausgewählt</p>
+          <p class="detail-panel__text">
+            Klicke auf einen Balken oder ein Segment in einem der Diagramme,
+            um eine genauere Analyse einzublenden.
+          </p>
+        </div>
 
-                    <select id="gameFilter">
-                        <option value="all">Alle</option>
-                        <option value="Call of Duty">Call of Duty</option>
-                        <option value="Battlefield">Battlefield</option>
-                        <option value="Arma">Arma</option>
-                        <option value="Squad">Squad</option>
-                        <option value="Escape from Tarkov">Escape from Tarkov</option>
-                    </select>
-                </div>
-            </div>
+        <!-- Action buttons -->
+        <div class="btn-row">
+          <button class="btn btn--outlined" id="reset-filters">
+            Filter zurücksetzen
+          </button>
+          <button class="btn btn--filled" id="export-csv">
+            CSV exportieren
+          </button>
+        </div>
 
-            <div class="button-row">
-                <button id="resetFilters">Filter zurücksetzen</button>
-                <button id="randomizeData">Neue Zufallsdaten</button>
-                <button id="exportCsv">CSV exportieren</button>
-            </div>
-        </section>
+      </div>
+    </div>
+  </section>
 
-        <section id="overview" class="kpi-grid">
-            <div class="kpi-card">
-                <h3>Teilnehmende</h3>
-                <p id="totalParticipants">0</p>
-            </div>
+  <!-- ════════════════════════════════════════════════════════
+       Kapitel 08 — Offene Stimmen
+       ════════════════════════════════════════════════════════ -->
+  <section class="story-chapter" id="stimmen">
+    <div class="chapter-intro">
+      <p class="chapter-label">Kapitel 08 &mdash; Qualitative Einblicke</p>
+      <h2 class="chapter-heading">Was sagen die Befragten?</h2>
+      <p class="chapter-lead">
+        Offene Antworten zeigen die Bandbreite der Einstellungen —
+        von medienkritischer Distanz bis zur differenzierten Auseinandersetzung
+        mit Spielen als politischem Kommunikationsmittel.
+        Die Suche filtert alle Antworten in Echtzeit.
+      </p>
+    </div>
+    <div class="page-wide">
+      <div class="answers-search">
+        <input
+          type="text"
+          id="search-answers"
+          placeholder="Antworten durchsuchen …"
+          aria-label="Antworten durchsuchen"
+        >
+      </div>
+      <div class="answer-list" id="open-answers-container"></div>
+    </div>
+  </section>
 
-            <div class="kpi-card">
-                <h3>Ø Einfluss</h3>
-                <p id="avgInfluence">0</p>
-            </div>
+  <!-- ── Footer ──────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Wissenschaftliche Umfrage zum Einfluss militärischer Spiele auf gesellschaftliche Wahrnehmung.</p>
+    <p>Alle dargestellten Daten sind synthetisch generiert und dienen ausschließlich der illustrativen Auswertung.</p>
+  </footer>
 
-            <div class="kpi-card">
-                <h3>Positives Soldatenbild</h3>
-                <p id="positiveMilitaryView">0%</p>
-            </div>
-
-            <div class="kpi-card">
-                <h3>Kritische Haltung</h3>
-                <p id="criticalBundeswehrView">0%</p>
-            </div>
-        </section>
-
-        <section id="framing" class="chart-grid">
-            <div class="card">
-                <h2>Spielhäufigkeit</h2>
-                <canvas id="frequencyChart"></canvas>
-            </div>
-
-            <div class="card">
-                <h2>Soldatenbild</h2>
-                <canvas id="militaryViewChart"></canvas>
-            </div>
-
-            <div id="gaming" class="card">
-                <h2>Gesellschaftlicher Einfluss</h2>
-                <canvas id="influenceChart"></canvas>
-            </div>
-
-            <div id="bundeswehr" class="card">
-                <h2>Bewertung Bundeswehr-Spiel</h2>
-                <canvas id="bundeswehrChart"></canvas>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Detailanalyse</h2>
-
-            <div id="detailAnalysis" class="detail-analysis">
-                <h3>Noch keine Kategorie ausgewählt</h3>
-                <p>
-                    Klicke auf einen Balken oder ein Segment in einem Diagramm,
-                    um hier eine genauere Analyse zu sehen.
-                </p>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Automatische Interpretation</h2>
-
-            <p id="interpretationText">
-                Hier erscheint automatisch eine datenbasierte Interpretation.
-            </p>
-        </section>
-
-        <section id="answers" class="card">
-            <h2>Offene Antworten</h2>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Antworten durchsuchen..."
-            >
-
-            <div id="openAnswers"></div>
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

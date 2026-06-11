@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Item \"C:\\\\Users\\\\User\\\\gaming-defense-dashboard\\\\DESIGN.md\"\\).Length; \\(Get-Content \"C:\\\\Users\\\\User\\\\gaming-defense-dashboard\\\\DESIGN.md\" | Measure-Object -Line\\).Lines)"
+    ]
+  }
+}
